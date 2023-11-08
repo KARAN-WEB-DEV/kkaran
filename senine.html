@@ -1,0 +1,176 @@
+
+<html>
+<head>
+<title>
+KKS
+</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+.container{
+background:url('./.jpg');
+background-color:skyblue;
+background-size:100% 100%;
+background-repeat:no-repeat;
+height:100vh;
+position:relative;
+}
+
+.container::before{
+content:"";
+position:absolute
+top:0;
+left:0;
+height:100%;11:30 14-04-2023
+width:100%;
+background:rgba(0,0,0,0.2);
+z-index:-1;
+}
+.navbar{
+background:rgba(0,0,0,0.5);
+color:white;
+font-family:sans-serif;
+display:flex;
+align-item:center;
+padding:2rem 4rem;
+}
+
+
+.navbar ul{
+list-style:none;
+display:flex;
+gap:0 3rem;
+margin-left:auto;
+}
+
+.navbar li{
+cursor:pointer;
+}
+
+.navbar h2{
+          font-size:2rem;
+}
+
+.landing{
+display:flex;
+align-item:center;
+height:calc(100vh-10rem);
+padding:0 3rem;
+}
+.landing .text_container h1{
+font-size:4.5rem;
+color:white;
+font-family:sans-serif;
+text-shadow:8px 5px 10px black;
+margin-button:1.5rem;
+line-height:1.2;
+}
+
+.landing.text_container button{
+padding:1rem 3rem;
+border: none;
+outline: none;
+cursor:white;
+background:#1e90ff91;
+color:white;
+font-family:sans-serif;
+border-radius: 6px;
+box-shadow: 10px 8px 18px 2px #ffffff3b;
+}
+
+</style>
+</head>
+
+<body> <bgcolor="red">
+
+<div class="opcl">
+
+
+<div class="container">
+<div class="navbar"><div class="slideshow-container">
+
+<h1>CALCULATE THE BEST AND WORST COMPLEXITY OF THE BINARY SEARCHING ALGORITHM WITH EXACT TIME TAKEN BY THE ALGORITHM ON INTEGER ARRAY.</h1>
+
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+#include &lt;stdlib.h&gt;
+
+// Binary search function
+int Binary_Search(int arr[],int size,int key ){
+ int mid , l = 0 , r = size-1;
+ while(l &lt;= r){
+ mid = (l + r)/2;
+ if(arr[mid] == key)
+ return mid;
+ else if(arr[mid] &lt; key)
+  l = mid +1;
+  else 
+  r = mid -1;
+ }
+ return -1;
+}
+int main() {
+    int n;
+    clock_t start, end;
+    double timeComplexity;
+
+printf("Enter the size of the array: ");
+scanf("%d", &amp;n);    // 100
+
+    int arr[n];
+printf("Enter Elements in Array\n");
+for ( int i = 0; i &lt; n; i++)
+{
+    arr[i] = i;
+}
+
+   // Worst-case scenario
+    start = clock();
+    int index2 = Binary_Search(arr, n, arr[n-1]);
+    end = clock();
+      timeComplexity = ((double)(end - start)) / CLOCKS_PER_SEC;
+ (index2 == -1)?printf("\nNot Present\n")
+:printf("\nPresent at %d Index\n",index2);
+       printf("Worstt-case time complexity: O(n) \n");
+         printf("Time taken by Algorithm: %lf seconds\n", timeComplexity);
+
+    //  Best-case scenario
+    start = clock();
+    int index1 = Binary_Search(arr, n, arr[0]);
+    end = clock();
+    timeComplexity= ((double)(end - start)) / CLOCKS_PER_SEC;
+ (index1 == -1)?printf("\nNot Present\n")
+:printf("\nPresent at %d Index\n",index1);
+       printf("Best-case time complexity: O(1) \n");
+      printf("Time taken  by Algorithm: %lf seconds\n", timeComplexity);
+
+printf("\n-------------------------------------------------\n");
+
+   
+
+    return 0;
+}
+/*
+
+Output:-
+
+Enter the size of the array: 5
+Enter Elements in Array
+
+Present at 4 Index
+Worstt-case time complexity: O(n) 
+Time taken by Algorithm: 0.000001 seconds
+
+Present at 0 Index
+Best-case time complexity: O(1) 
+Time taken  by Algorithm: 0.000001 seconds
+
+-------------------------------------------------
+*/</pre></body></html>

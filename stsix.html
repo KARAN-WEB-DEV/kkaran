@@ -1,0 +1,297 @@
+
+
+<html>
+<head>
+<title>
+KKS
+</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+.container{
+background:url('./.jpg');
+background-color:skyblue;
+background-size:100% 100%;
+background-repeat:no-repeat;
+height:100vh;
+position:relative;
+}
+
+.container::before{
+content:"";
+position:absolute
+top:0;
+left:0;
+height:100%;11:30 14-04-2023
+width:100%;
+background:rgba(0,0,0,0.2);
+z-index:-1;
+}
+.navbar{
+background:rgba(0,0,0,0.5);
+color:white;
+font-family:sans-serif;
+display:flex;
+align-item:center;
+padding:2rem 4rem;
+}
+
+
+.navbar ul{
+list-style:none;
+display:flex;
+gap:0 3rem;
+margin-left:auto;
+}
+
+.navbar li{
+cursor:pointer;
+}
+
+.navbar h2{
+          font-size:2rem;
+}
+
+.landing{
+display:flex;
+align-item:center;
+height:calc(100vh-10rem);
+padding:0 3rem;
+}
+.landing .text_container h1{
+font-size:4.5rem;
+color:white;
+font-family:sans-serif;
+text-shadow:8px 5px 10px black;
+margin-button:1.5rem;
+line-height:1.2;
+}
+
+.landing.text_container button{
+padding:1rem 3rem;
+border: none;
+outline: none;
+cursor:white;
+background:#1e90ff91;
+color:white;
+font-family:sans-serif;
+border-radius: 6px;
+box-shadow: 10px 8px 18px 2px #ffffff3b;
+}
+
+</style>
+</head>
+
+<body> <bgcolor="red">
+
+<div class="opcl">
+
+
+<div class="container">
+<div class="navbar"><div class="slideshow-container">
+
+<h1>CREATE TWO INTEGER STACKS IN A SINGLE ARRAY.</h1>
+
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">//7. CREATE TWO INTEGER STACKS IN A SINGLE ARRAY
+#include &lt;stdio.h&gt;
+
+int push(int stack[], int size, int value, int stackNum, int top1, int top2) {
+   if(stackNum == 1){
+    if (top1 + 1 == top2 || top1 == size-1 || top2 == 0) {
+       
+        return -1 ; // overflow
+    }
+
+    else {
+        top1++;
+        stack[top1] = value;
+        return top1;
+    } 
+   }
+
+   else{
+    if(top2 == top1 + 1 || top1 == size-1 || top2 == 0)
+        return -1;
+    else   {
+        top2--;
+        stack[top2] = value;
+        return top2;
+    }
+   }
+}
+
+int pop(int stack[],int size, int stackNum, int top1, int top2) {
+   if (stackNum == 1){
+    if (top1 == -1) {    
+        return -1; // underflow
+    } 
+    else{
+        top1 = top1 - 1;
+        return top1;
+    }
+   }
+
+   else{
+    if( top2 == size) {
+      
+        return -1;
+    }
+else   {
+        top2 = top2 +1;
+        return top2;
+    }
+   
+}
+}
+int peek(int stack[],int size, int stackNum, int top1, int top2){
+     if (stackNum == 1){
+    if (top1 == -1) {    
+        return -1; // underflow
+    } 
+    
+     return top1;
+    }
+    else
+    {
+      if (top2 == size) {    
+        return -1; // underflow
+    }  
+    return top2;
+    }
+    
+}
+int main() {
+    int size = 10, value, stackNum;;
+    int stack[size];
+    int top1 = -1; //  Stack 1 ka top
+    int top2 = size; //  Stack 2 ka top
+    
+    char press;
+
+    do {
+        printf("1 Push\n2 Pop\n3 Peek\n4  Exit\n");
+        printf("Enter your choice ");
+        press = getchar();
+        
+
+        switch (press) {
+     case '1':
+     printf("Enter the stack number (either 1 or 2)\n ");
+    scanf("%d", &amp;stackNum);
+        printf("Enter the value to add\n ");
+        scanf("%d", &amp;value);
+    if (stackNum == 1 || stackNum == 2) {
+        if (stackNum == 1) {
+    top1 = push(stack, size, value, stackNum, top1, top2);
+    (top1 ==-1)?printf("\n Stack 1 is full"):
+    printf("The value %d is pushed successfully into Stack 1\n", stack[top1]);
+       break;
+        } 
+    else {
+    top2 = push(stack, size, value, stackNum, top1, top2);
+        }(top2 ==-1)?printf("\n Stack 2 is full"):
+    printf("The value %d is pushed successfully into Stack 2\n", stack[top2]);
+        break;
+    } 
+    else {
+        printf("Enter a valid number b/w 1 or 2\n");
+    }
+    break;
+
+       case '2':
+    printf("Enter the stack number (1 or 2)\n ");
+    scanf("%d", &amp;stackNum);
+    if (stackNum == 1 || stackNum == 2) {
+    if (stackNum == 1) {
+    top1 = pop(stack,size, stackNum, top1, top2);
+    (top1 == -1)? printf("\nStack is Empty\n"):
+printf("\nThe value is poped successfully and now TOP 1 pointing to %d index",top1);
+
+    } 
+    else {
+    top2 = pop(stack,size, stackNum, top1, top2);
+    (top2 == -1)? printf("\nStack is Empty\n"):
+printf("\nThe value is poped successfully and now TOP 2 pointing to %d index",top2);
+
+    }
+    } else {
+     printf("Enter a valid number b/w 1 or 2\n");
+        }
+    break;
+                
+    case '3':
+    printf("Enter the stack number (1 or 2)\n ");
+    scanf("%d", &amp;stackNum);
+     if (stackNum == 1 || stackNum == 2) {
+    if (stackNum == 1) {
+ top1 = peek(stack, size,stackNum, top1, top2);
+    (top1 == -1)?
+printf("\n Stack Is Empty\n"):
+printf("The Top-Most character of Stack 1 is %d\n",stack[top1]);
+    
+        } else {
+    top2 = peek(stack,size, stackNum, top1, top2);
+    (top2 == -1)?
+printf("\n Stack Is Empty\n"):
+printf("The Top-Most character of Stack 2 is %d\n",stack[top2]);
+    }
+    } else {
+     printf("Enter a valid number b/w 1 or 2\n");
+        }
+    break;
+    case '4':
+    printf("Exit\n");
+    break;
+        }
+
+    } while (press != '4');
+
+    return 0;
+}
+
+/*
+Output:-
+1 Push
+2 Pop
+3 Peek
+4  Exit
+Enter your choice 1
+Enter the stack number (either 1 or 2)
+ 1
+Enter the value to add
+ 23
+The value 23 is pushed successfully into Stack 1
+1 Push
+2 Pop
+3 Peek
+4  Exit
+Enter your choice 2
+Enter the stack number (1 or 2)
+ 1
+
+Stack is Empty
+1 Push
+2 Pop
+3 Peek
+4  Exit
+Enter your choice 2
+Enter the stack number (1 or 2)
+ 2
+
+Stack is Empty
+1 Push
+2 Pop
+3 Peek
+4  Exit
+Enter your choice
+
+*/
+
+</pre></body></html>

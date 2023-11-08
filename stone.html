@@ -1,0 +1,221 @@
+
+
+<html>
+<head>
+<title>
+KKS
+</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+.container{
+background:url('./.jpg');
+background-color:skyblue;
+background-size:100% 100%;
+background-repeat:no-repeat;
+height:100vh;
+position:relative;
+}
+
+.container::before{
+content:"";
+position:absolute
+top:0;
+left:0;
+height:100%;11:30 14-04-2023
+width:100%;
+background:rgba(0,0,0,0.2);
+z-index:-1;
+}
+.navbar{
+background:rgba(0,0,0,0.5);
+color:white;
+font-family:sans-serif;
+display:flex;
+align-item:center;
+padding:2rem 4rem;
+}
+
+
+.navbar ul{
+list-style:none;
+display:flex;
+gap:0 3rem;
+margin-left:auto;
+}
+
+.navbar li{
+cursor:pointer;
+}
+
+.navbar h2{
+          font-size:2rem;
+}
+
+.landing{
+display:flex;
+align-item:center;
+height:calc(100vh-10rem);
+padding:0 3rem;
+}
+.landing .text_container h1{
+font-size:4.5rem;
+color:white;
+font-family:sans-serif;
+text-shadow:8px 5px 10px black;
+margin-button:1.5rem;
+line-height:1.2;
+}
+
+.landing.text_container button{
+padding:1rem 3rem;
+border: none;
+outline: none;
+cursor:white;
+background:#1e90ff91;
+color:white;
+font-family:sans-serif;
+border-radius: 6px;
+box-shadow: 10px 8px 18px 2px #ffffff3b;
+}
+
+</style>
+</head>
+
+<body> <bgcolor="red">
+
+<div class="opcl">
+
+
+<div class="container">
+<div class="navbar"><div class="slideshow-container">
+
+<h1>CREATE A STACK IMPLEMENTING THE OPERATIONS ON THE CHARACTERS ARRAY (PUSH, POP, PEEK, ISEMPTY, ISFULL)<h1>
+
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">#include &lt;stdio.h&gt;
+
+int push(char[], int, char, int);
+int pop(char[], int);
+int peek(char[], int);
+int isFull(char[], int, int);
+int isEmpty(char[], int);
+
+//  is full
+int isFull(char stack[], int size, int top) {
+    if (top == size - 1) {
+        return 1; // true
+    }
+    return 0; // false
+}
+
+//  is empty
+int isEmpty(char stack[], int top) {
+    if (top == -1) {
+        return 1;
+    }
+    return 0;
+}
+
+// Push operation
+int push(char stack[], int size, char value, int top) {
+    if( isFull(stack,size,top)){
+    return -1; //indicates  unsuccessful push oper...
+   
+  }
+  else{
+    top++;
+stack[top] = value;
+return top;
+  }
+}
+
+// Pop operation
+int pop(char stack[], int top) {
+ if(isEmpty(stack,top)){
+ return -1;
+}
+else 
+{
+top--;
+return top;
+}
+}
+
+// Peek operation
+int peek(char stack[], int top) {
+    if(isEmpty(stack,top)){
+ return -1;
+ }
+ else
+ return top;
+}
+
+int main() {
+    char stack[10];
+    int size, key, top = -1;
+    char value;
+    char press;
+    
+    do {
+         printf("1. Push\n2. Pop\n3. Peek\n4. Exit\n");
+        printf("\nEnter Your choice\n");
+          press = getchar();
+  
+
+        switch (press) {
+    case '1':
+            printf("\nEnter the value to add: ");
+            scanf(" %c", &amp;value);
+            top = push(stack, 10, value, top);
+            (top == -1)? printf("\nStack is full\n"):
+  printf(" The value  %c is pushed successfully\n",stack[top]);
+                break;
+
+    case '2':
+                top = pop(stack, top);
+                (top == -1)? printf("\nStack is Empty\n"):
+printf("\nThe value is poped successfully and now TOP pointing to %d index",top);
+                break;
+
+case '3':
+            top = peek(stack, top);
+            (top == -1)?
+            printf("\n Stack Is Empty\n"):
+            printf("The Top-Most character is %c\n",stack[top]);
+                break;
+
+    case '4':
+                printf("Exit\n");
+                break;
+        }
+    } while (press != '4');
+
+    return 0;
+}
+
+/*
+Output:-
+
+1. Push
+2. Pop
+3. Peek
+4. Exit
+
+Enter Your choice
+1
+
+Enter the value to add: A
+The value  A is pushed successfully
+Enter Your choice
+4
+Exit
+
+
+*/</pre></body></html>

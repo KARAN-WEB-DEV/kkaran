@@ -1,0 +1,221 @@
+<html>
+<head>
+<title>
+KKS
+</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+.container{
+background:url('./.jpg');
+background-color:skyblue;
+background-size:100% 100%;
+background-repeat:no-repeat;
+height:100vh;
+position:relative;
+}
+
+.container::before{
+content:"";
+position:absolute
+top:0;
+left:0;
+height:100%;11:30 14-04-2023
+width:100%;
+background:rgba(0,0,0,0.2);
+z-index:-1;
+}
+.navbar{
+background:rgba(0,0,0,0.5);
+color:white;
+font-family:sans-serif;
+display:flex;
+align-item:center;
+padding:2rem 4rem;
+}
+
+
+.navbar ul{
+list-style:none;
+display:flex;
+gap:0 3rem;
+margin-left:auto;
+}
+
+.navbar li{
+cursor:pointer;
+}
+
+.navbar h2{
+          font-size:2rem;
+}
+
+.landing{
+display:flex;
+align-item:center;
+height:calc(100vh-10rem);
+padding:0 3rem;
+}
+.landing .text_container h1{
+font-size:4.5rem;
+color:white;
+font-family:sans-serif;
+text-shadow:8px 5px 10px black;
+margin-button:1.5rem;
+line-height:1.2;
+}
+
+.landing.text_container button{
+padding:1rem 3rem;
+border: none;
+outline: none;
+cursor:white;
+background:#1e90ff91;
+color:white;
+font-family:sans-serif;
+border-radius: 6px;
+box-shadow: 10px 8px 18px 2px #ffffff3b;
+}
+
+</style>
+</head>
+
+<body> <bgcolor="red">
+
+<div class="opcl">
+
+
+<div class="container">
+<div class="navbar"><div class="slideshow-container">
+
+<h1>ENTER A INTEGER ARRAY FROM THE USER AND PERFORM SELECTION SORT ALGORITHM THROUGH ITERATION. ALSO CALCULATE THE WORST AND BEST COMPLEXITY WITH EXACT TIME.</h1>
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">#include&lt;stdio.h&gt;
+
+// Sorting Sort for Ascending Order
+void Selection_Sort_As(int arr[],int size){
+
+    int j,temp,min;
+for(int i = 0; i &lt; size-1; i++){
+     min = i; // assuming arr[i] is smallest.
+   for ( j = i+1; j &lt; size; j++)
+   {
+    if(arr[min] &gt; arr[j]){
+        min = j;
+    }
+
+   }
+   //  Case 1 
+//  Elemtent is the smallest so you don't have to perform swapping
+//  Case 2
+// otherwise perform swapping
+   if(i != min){
+     temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+   }
+
+}
+
+}
+// Selection Sort for descending Order
+void Selection_Sort_Ds(int arr[],int size){
+
+    int j,temp,min;
+for(int i = size-1; i &gt; 0; i--){
+     min = i;
+   for ( j = i-1; j &gt;= 0; j--)
+   {
+    if(arr[min] &gt; arr[j]){
+        min = j;
+    }
+
+   }
+  
+   if(i != min){
+     temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+   }
+
+}
+
+}
+
+
+int main(){
+    int arr[15],i,size,choice;
+ 
+    printf("Enter the number of elements you want to enter");
+scanf("%d",&amp;size);
+printf("Enter the elements\n");
+for ( i = 0; i &lt; size; i++)
+{
+    printf("\nElement %d : ",i+1);
+    scanf("%d",&amp;arr[i]);
+}
+   printf("In which order you want to SORT elements\n");
+   printf("1 : Ascending Order\n");
+   printf("2 : Descending Order\n");
+  
+   printf("Enter Your Choice\n");
+   scanf("%d",&amp;choice);
+   printf("Before sorting\n");
+ for ( i = 0; i &lt; size; i++)
+ {
+    printf("%d\t",arr[i]);
+ }
+  printf("\n");
+  switch(choice){
+    case 1:
+   Selection_Sort_As(arr,size); 
+   break;
+   case 2:
+   Selection_Sort_Ds(arr,size); 
+   break;
+  
+   default:
+   printf("Make  a valid choice\n ");
+   break;
+  }
+   
+    printf("After sorting\n");
+ for ( i = 0; i &lt; size; i++)
+ {
+    printf("%d\t",arr[i]);
+ }
+  printf("\n");
+
+ 
+
+    return 0;
+}
+/*
+
+Output:-
+
+Enter the number of elements you want to enter 5
+5
+Enter the elements
+
+Element 1 : 5
+Element 2 : 4
+Element 3 : 3
+Element 4 : 2
+Element 5 : 1
+In which order you want to SORT elements
+1 : Ascending Order
+2 : Descending Order
+Enter Your Choice
+1
+Before sorting
+5	4	3	2	1	
+After sorting
+1	2	3	4	5	
+*/</pre></body></html>

@@ -1,0 +1,239 @@
+
+<html>
+<head>
+<title>
+KKS
+</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+.container{
+background:url('./.jpg');
+background-color:skyblue;
+background-size:100% 100%;
+background-repeat:no-repeat;
+height:100vh;
+position:relative;
+}
+
+.container::before{
+content:"";
+position:absolute
+top:0;
+left:0;
+height:100%;11:30 14-04-2023
+width:100%;
+background:rgba(0,0,0,0.2);
+z-index:-1;
+}
+.navbar{
+background:rgba(0,0,0,0.5);
+color:white;
+font-family:sans-serif;
+display:flex;
+align-item:center;
+padding:2rem 4rem;
+}
+
+
+.navbar ul{
+list-style:none;
+display:flex;
+gap:0 3rem;
+margin-left:auto;
+}
+
+.navbar li{
+cursor:pointer;
+}
+
+.navbar h2{
+          font-size:2rem;
+}
+
+.landing{
+display:flex;
+align-item:center;
+height:calc(100vh-10rem);
+padding:0 3rem;
+}
+.landing .text_container h1{
+font-size:4.5rem;
+color:white;
+font-family:sans-serif;
+text-shadow:8px 5px 10px black;
+margin-button:1.5rem;
+line-height:1.2;
+}
+
+.landing.text_container button{
+padding:1rem 3rem;
+border: none;
+outline: none;
+cursor:white;
+background:#1e90ff91;
+color:white;
+font-family:sans-serif;
+border-radius: 6px;
+box-shadow: 10px 8px 18px 2px #ffffff3b;
+}
+
+</style>
+</head>
+
+<body> <bgcolor="red">
+
+<div class="opcl">
+
+
+<div class="container">
+<div class="navbar"><div class="slideshow-container">
+
+<h1>Enter two Matrices from user, multiply the matrices and display the answer?</h1>
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">
+#include&lt;stdio.h&gt;
+
+void MulMatrix(int first[][10],int second[][10],int r1, int c1, int r2, int c2) {
+   int i,j,k;
+   int result[r1][c2];
+   // Initializing elements of matrix result to 0.
+   //bcoz each index contain a garbage value
+   for (i = 0; i &lt; r1; ++i) {
+      for (j = 0; j &lt; c2; ++j) {
+         result[i][j] = 0;
+      }
+   }
+
+   // Multiplying first and second matrices and storing it in result
+   for (i = 0; i &lt; r1; ++i) { 
+    //first loop  for --- row1 in first
+      for (j = 0; j &lt; c2; ++j) {
+        //socond loop for --- column2 in second
+         for (k = 0; k &lt; c1; ++k) {
+            //third loop for --column 1 in
+         // first &amp; row in second
+         
+            result[i][j] += first[i][k] * second[k][j];
+         }
+      }
+   }
+
+// for priniting
+
+    printf("\nThe result of Multiplying two Matrix is :\n");
+     for(i = 0; i &lt; r1; i++)
+    {
+        for (j = 0; j &lt; c2; j++)
+        {
+            printf("%d\t", result[i][j]);
+        }
+        printf("\n");        
+    }
+    
+}
+
+
+ int main() {
+   int i,j;
+   int first[10][10], second[10][10], result[10][10], row1, column1, row2, column2;
+   start :printf("\nEnter rows and column for the first matrix: ");
+   scanf("%d %d", &amp;row1, &amp;column1);
+   printf("\nEnter rows and column for the second matrix: ");
+   scanf("%d %d", &amp;row2, &amp;column2);
+   // the no.of cols in M1 should same in number as no. of cols in M2
+   // 3 X 3----3 X 2
+   // resultant Matrix: 3 X 2
+   if(column1 != row2){
+   printf("\nEnter a valid Matrix\n");
+   goto start;
+   }
+  printf("For First Matrix\n");
+    for( int i = 0; i &lt; row1; i++)
+    {
+        for (int j = 0; j &lt; column1; j++)
+        {
+            
+            printf("A[%d][%d]\t", i, j);
+            scanf("%d", &amp;first[i][j]);
+            printf("\n");
+        }
+    }
+    // for 2nd matrix
+printf("For Second Matrix\n");
+    for( int i = 0; i &lt; row2; i++)
+    {
+        for (int j = 0; j &lt; column2; j++)
+        {
+            
+            printf("A[%d][%d]\t", i, j);
+            scanf("%d", &amp;second[i][j]);
+            printf("\n");
+        }
+    }
+
+//printing
+    printf("Matrix 1: \n");
+     for(i = 0; i &lt; row1; i++)
+    {
+        for (j = 0; j &lt; column1; j++)
+        {
+            printf("%d\t", first[i][j]);
+        }
+        printf("\n");        
+    }
+    printf("Matrix 2: \n");
+     for(i = 0; i &lt; row2; i++)
+    {
+        for (j = 0; j &lt; column2; j++)
+        {
+            printf("%d\t", second[i][j]);
+        }
+        printf("\n");        
+    }    
+    MulMatrix(first,second, row1,column1,row2,column2);
+    
+    
+    return 0;
+}
+/*
+
+Output:-
+
+Enter rows and column for the first matrix: 
+3 2
+Enter rows and column for the second matrix: 
+2 3
+For First Matrix
+A[0][0]	1
+A[0][1]	2
+A[1][0]	3
+A[1][1]	4
+A[2][0]	4
+A[2][1]	5
+For Second Matrix
+A[0][0]	2
+A[0][1]	1
+A[0][2]	5
+A[1][0]	2
+A[1][1]	4
+A[1][2]	1
+Matrix 1: 
+1	2	
+3	4	
+4	5	
+Matrix 2: 
+2	1	5	
+2	4	1	
+
+The result of Multiplying two Matrix is :
+6	9	7	
+14	19	19	
+18	24	25	
+*/</pre></body></html>

@@ -1,0 +1,49 @@
+
+<!-- saved from url=(0043)https://himanshu4288.netlify.app/1display.c -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">#include&lt;stdio.h&gt;
+void display(int mat[4][2]){
+    int i, j;
+ printf("The MatriX is : \n");
+    for (i = 0; i &lt; 4; i++)
+    {
+        for (j = 0; j &lt; 2; j++)
+        {
+            printf("%d\t", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main(){
+    int mat[4][2], i, j;
+    printf(" Enter Elements in Array \n");
+    for (i = 0; i &lt; 4; i++)
+    {
+        for (j = 0; j &lt; 2; j++)
+        {
+            printf(" A[%d][%d] :\t", i, j);
+            scanf("%d", &amp;mat[i][j]);
+        }
+    }
+    display(mat);
+    return 0;
+}
+/*
+
+Output:-
+
+Enter Elements in Array 
+ A[0][0] :	4
+ A[0][1] :	3
+ A[1][0] :	2
+ A[1][1] :	1
+ A[2][0] :	7
+ A[2][1] :	8
+ A[3][0] :	9
+ A[3][1] :	45
+ The MatriX is : 
+4	3	
+2	1	
+7	8	
+9	45	
+*/</pre></body></html>
